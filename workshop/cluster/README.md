@@ -40,7 +40,8 @@ Access to RabbitMQ Management UI
   * user=guest
   * password=guest
 
-
+For AMQP client
+* port=5672
 
 
 ## Delete all resources
