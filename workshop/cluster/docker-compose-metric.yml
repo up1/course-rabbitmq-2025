@@ -1,0 +1,13 @@
+networks:
+  rabbitmq:
+
+services:
+  prometheus:
+    # https://hub.docker.com/r/prom/prometheus/tags
+    image: prom/prometheus:v2.53.5
+    networks:
+      - "rabbitmq"
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml

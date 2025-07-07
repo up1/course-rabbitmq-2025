@@ -55,6 +55,16 @@ $curl -s localhost:15692/metrics | head -n 3
 erlang_mnesia_held_locks 0
 ```
 
+Start prometheus server
+```
+$docker compose -f docker-compose-metric.yml up -d prometheus
+$docker compose -f docker-compose-metric.yml ps
+```
+
+Access to Prometheus UI
+* http://localhost:9090
+* http://localhost:9090/targets
+
 ## Delete all resources
 ```
 $docker compose down
