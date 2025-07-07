@@ -43,6 +43,17 @@ Access to RabbitMQ Management UI
 For AMQP client
 * port=5672
 
+## Working with application metric with Prometheus
+
+Access to `rabbitmq1` and get metric data
+```
+$docker compose exec -it rabbitmq1 bash
+$curl -s localhost:15692/metrics | head -n 3
+
+# TYPE erlang_mnesia_held_locks gauge
+# HELP erlang_mnesia_held_locks Number of held locks.
+erlang_mnesia_held_locks 0
+```
 
 ## Delete all resources
 ```
