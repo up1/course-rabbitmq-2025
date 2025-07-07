@@ -31,3 +31,12 @@ Access to RabbitMQ Management UI
 * http://localhost:15672/
   * user=guest
   * password=guest
+
+
+
+
+## Delete all resources
+```
+$docker compose down
+$docker volume prune
+```
