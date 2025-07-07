@@ -44,6 +44,7 @@ For AMQP client
 * port=5672
 
 ## Working with application metric with Prometheus
+* https://www.rabbitmq.com/docs/prometheus
 
 Access to `rabbitmq1` and get metric data
 ```
@@ -65,8 +66,23 @@ Access to Prometheus UI
 * http://localhost:9090
 * http://localhost:9090/targets
 
+## Working with Grafana dashboard
+* https://grafana.com/grafana/dashboards/10991-rabbitmq-overview/
+```
+$docker compose -f docker-compose-metric.yml up -d grafana
+$docker compose -f docker-compose-metric.yml ps
+```
+
+Access to Grafana UI
+* http://localhost:3000
+  * user=admin
+  * password=admin
+
+
 ## Delete all resources
 ```
 $docker compose down
+$docker compose -f docker-compose-metric.yml down
+
 $docker volume prune
 ```
