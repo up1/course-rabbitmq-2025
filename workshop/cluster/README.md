@@ -15,6 +15,14 @@
 $docker compose build
 ```
 
+Config of RabbitMQ
+* [Erlang cookie](https://www.rabbitmq.com/docs/clustering#erlang-cookie)
+  * Use for the nodes in cluster communicate with each other
+
+Config of Load balancer [HA Proxy](http://www.haproxy.org/)
+* File `configs/haproxy.cfg`
+
+
 ## Start RabbitMQ cluster and Load Balancer
 ```
 $docker compose up -d haproxy
