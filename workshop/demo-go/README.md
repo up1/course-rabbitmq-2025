@@ -1,4 +1,5 @@
 # Workshop with RabbitMQ and Go
+* Work queue pattern
 
 ## Install RabbitMQ + Stream
 ```
