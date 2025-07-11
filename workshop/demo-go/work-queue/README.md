@@ -1,4 +1,5 @@
 # Working with Work queue
+* Direct exchange
 
 ## Start consumer A
 ```
