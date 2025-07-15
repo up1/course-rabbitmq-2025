@@ -1,6 +1,7 @@
 # Use case :: Re-delivery
 * Consumer crash
-* Consumer that will re-read (“redeliver”) any messages that weren’t ACK’d before the crash
+* Consumer that will re-read (redeliver) any messages that weren’t ACK’d before the crash
+* Consumer crashes and redeliver unacknowledged messages
 
 
 ## Config Producer
