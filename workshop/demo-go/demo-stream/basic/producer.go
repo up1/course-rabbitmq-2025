@@ -38,7 +38,7 @@ func main() {
 	shared.FailOnError(err, "Failed to create producer")
 
 	// Publish messages with confirmation
-	messageCount := 10
+	messageCount := 1
 	chPublishConfirm := producer.NotifyPublishConfirmation()
 	ch := make(chan bool)
 	handlePublishConfirm(chPublishConfirm, messageCount, ch)
