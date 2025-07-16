@@ -76,6 +76,7 @@ $go run consumer_sac.go A1
 
 ### Run producer to create super stream
 * Exchange=`orders_stream` => direct
+* Max number of consumer = Number of partition
 * Stream
   * orders_stream-0
   * orders_stream-1
