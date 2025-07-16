@@ -27,3 +27,23 @@ $export RABBITMQ_URL=amqp://user:password@localhost:5672
 $go run producer.go A
 $go run producer.go B
 ```
+
+## Working with scaling consumers
+
+Start producer
+```
+$export RABBITMQ_URL=amqp://user:password@localhost:5672
+$go run producer_scale.go
+```
+
+Start consumers of service 1
+```
+$export RABBITMQ_URL=amqp://user:password@localhost:5672
+
+$go run consumer_scale.go service1
+$go run consumer_scale.go service1
+
+
+$go run consumer_scale.go service2
+```
+
