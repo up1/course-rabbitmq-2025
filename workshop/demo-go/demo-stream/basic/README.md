@@ -82,6 +82,7 @@ $go run consumer_sac.go A1
   * orders_stream-2
 
 ```
+$export RABBITMQ_STREAM_URL=rabbitmq-stream://user:password@localhost:5552
 $go run producer_super_stream.go
 
 Publishing messages to super stream 'orders_stream'...
@@ -97,5 +98,14 @@ Message with key: key_6 stored in partition orders_stream-2, total: 7
 Message with key: key_1 stored in partition orders_stream-1, total: 8
 Message with key: key_8 stored in partition orders_stream-1, total: 9
 Message with key: key_9 stored in partition orders_stream-1, total: 10
+```
+
+### Run consumer with Single Active Consumer
+```
+$export RABBITMQ_STREAM_URL=rabbitmq-stream://user:password@localhost:5552
+
+$go run  consumer_super_stream_sac.go A1
+$go run  consumer_super_stream_sac.go A1
+$go run  consumer_super_stream_sac.go A1
 ```
 
