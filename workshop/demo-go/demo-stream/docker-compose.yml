@@ -3,10 +3,13 @@ services:
     image: rabbitmq:4-management
     environment:
       - RABBITMQ_ERLANG_COOKIE='secret_cookie'
-      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbitmq_stream advertised_host node1 advertised_port 5562
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbitmq_stream advertised_host localhost
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password
     ports:
       - "5552:5552"
       - "5672:5672"
       - "15672:15672"
+    volumes:
+      # - ./conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./conf/enabled_plugins:/etc/rabbitmq/enabled_plugins
