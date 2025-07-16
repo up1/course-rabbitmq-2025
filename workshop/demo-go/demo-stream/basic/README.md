@@ -1,6 +1,11 @@
 # Basic of Stream queue
 * Fanout patterns
+  * Offset and consumer name
+  * Filter message or routing key
+* RabbitMQ stream
+  * Port=5552
 * [Stream client with Go](https://github.com/rabbitmq/rabbitmq-stream-go-client)
+
 
 ## Install
 ```
