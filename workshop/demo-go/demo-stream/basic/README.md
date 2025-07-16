@@ -55,6 +55,23 @@ $go run consumer_filter.go B type2
 $go run consumer_filter.go C type3
 ```
 
+## Single Active Consumer (SAC)
+
+Run producer
+```
+$export RABBITMQ_STREAM_URL=rabbitmq-stream://user:password@localhost:5552
+$go run producer_sac.go
+```
+
+Run consumers
+```
+$export RABBITMQ_STREAM_URL=rabbitmq-stream://user:password@localhost:5552
+
+$go run consumer_sac.go A1
+$go run consumer_sac.go A1
+$go run consumer_sac.go A1
+```
+
 ## Super stream
 
 ### Run producer to create super stream
