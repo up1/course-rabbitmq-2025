@@ -1,5 +1,6 @@
 # Basic of Stream queue
 * Fanout patterns
+* [Stream client with Go](https://github.com/rabbitmq/rabbitmq-stream-go-client)
 
 ## Install
 ```
