@@ -68,6 +68,7 @@ Access to Prometheus UI
 
 ## Working with Grafana dashboard
 * https://grafana.com/grafana/dashboards/10991-rabbitmq-overview/
+* https://grafana.com/grafana/dashboards/14798-rabbitmq-stream/
 ```
 $docker compose -f docker-compose-metric.yml up -d grafana
 $docker compose -f docker-compose-metric.yml ps
