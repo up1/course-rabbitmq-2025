@@ -1,0 +1,34 @@
+networks:
+  rabbitmq:
+
+services:
+  prometheus:
+    # https://hub.docker.com/r/prom/prometheus/tags
+    image: prom/prometheus:v2.53.5
+    networks:
+      - "rabbitmq"
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    # https://hub.docker.com/r/grafana/grafana/tags
+    image: grafana/grafana:12.0.2
+    ports:
+      - "3000:3000"
+    networks:
+      - "rabbitmq"
+    volumes:
+      - ./configs/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/rabbitmq.yaml
+      - ./configs/grafana/datasources.yml:/etc/grafana/provisioning/datasources/prometheus.yaml
+      - ./configs/grafana/dashboards:/dashboards
+    environment:
+      # https://grafana.com/plugins/flant-statusmap-panel
+      # https://grafana.com/plugins/grafana-piechart-panel
+      # https://grafana.com/plugins/grafana-polystat-panel
+      # https://grafana.com/plugins/jdbranham-diagram-panel
+      # https://grafana.com/plugins/michaeldmoore-multistat-panel
+      # https://grafana.com/plugins/vonage-status-panel
+      # https://grafana.com/plugins/yesoreyeram-boomtable-panel
+      GF_INSTALL_PLUGINS: "flant-statusmap-panel,grafana-piechart-panel"

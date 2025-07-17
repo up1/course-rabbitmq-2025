@@ -1,0 +1,26 @@
+services:
+  rabbit_node1:
+    image: rabbitmq:4-management
+    environment:
+      - RABBITMQ_ERLANG_COOKIE='secret_cookie'
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbitmq_stream advertised_host localhost
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - "5552:5552"
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      # - ./configs/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./configs/enabled_plugins:/etc/rabbitmq/enabled_plugins
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    networks:
+      - rabbitmq
+
+networks:
+  rabbitmq:
