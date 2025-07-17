@@ -2,6 +2,7 @@
 * [Monitoring system](https://www.rabbitmq.com/docs/prometheus)
   * Prometheus
   * Grafana
+* [List of metrics](https://www.rabbitmq.com/docs/monitoring#rabbitmq-metrics)
 
 ## Build image
 ```
