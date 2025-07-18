@@ -19,3 +19,10 @@ $java -jar stream-perf-test-latest.jar --uris rabbitmq-stream://user:password@lo
 
 Enable metrics
 * http://localhost:8080/metrics
+
+## Monitoring CLI
+```
+$rabbitmq-streams stream_status --vhost / basic-stream
+$rabbitmq-streams list_stream_consumers
+$rabbitmq-streams list_stream_tracking basic-stream --all
+```
