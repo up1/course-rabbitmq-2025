@@ -30,7 +30,7 @@ func main() {
 	shared.FailOnError(err, "Failed to declare a queue")
 
 	err = ch.Qos(
-		5,     // prefetch count
+		10,    // prefetch count
 		0,     // prefetch size
 		false, // global
 	)

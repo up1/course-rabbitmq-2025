@@ -34,18 +34,6 @@ func main() {
 	)
 	shared.FailOnError(err, "Failed to declare stream")
 
-	// Create a consumer
-	messagesHandler := func(consumerContext stream.ConsumerContext, message *amqp.Message) {
-		// Processing the message
-		fmt.Printf("Stream: %s - Received message: %s with offset: %d\n", consumerContext.Consumer.GetStreamName(),
-			message.Data, consumerContext.Consumer.GetOffset())
-
-		// Store the offset after processing the message :: bad practice
-		err := consumerContext.Consumer.StoreOffset()
-		shared.FailOnError(err, "Failed to store offset")
-
-		fmt.Printf("Stream: %s - Storing offset after processing message: %s\n", consumerContext.Consumer.GetStreamName(), message.Data)
-	}
 	// Create a consumer with last offset
 	var offsetSpecification stream.OffsetSpecification
 	name := "consumer-offset-" + os.Args[1]
@@ -57,7 +45,7 @@ func main() {
 	}
 
 	// Create a consumer with offset
-	consumer, err := env.NewConsumer(streamName, messagesHandler,
+	consumer, err := env.NewConsumer(streamName, messagesHandlerWithOffset,
 		stream.NewConsumerOptions().
 			SetConsumerName(name).
 			SetManualCommit().
@@ -70,4 +58,27 @@ func main() {
 	_, _ = reader.ReadString('\n')
 	err = consumer.Close()
 	shared.FailOnError(err, "Failed to close consumer")
+}
+
+func messagesHandlerWithOffset(consumerContext stream.ConsumerContext, message *amqp.Message) {
+	// Processing the message
+	fmt.Printf("Stream: %s - Received message: %s with offset: %d\n", consumerContext.Consumer.GetStreamName(),
+		message.Data, consumerContext.Consumer.GetOffset())
+
+	err := consumerContext.Consumer.StoreCustomOffset(consumerContext.Consumer.GetOffset())
+	shared.FailOnError(err, "Failed to store offset")
+
+	fmt.Printf("Stream: %s - Storing offset after processing message: %s\n", consumerContext.Consumer.GetStreamName(), message.Data)
+}
+
+func messagesHandler(consumerContext stream.ConsumerContext, message *amqp.Message) {
+	// Processing the message
+	fmt.Printf("Stream: %s - Received message: %s with offset: %d\n", consumerContext.Consumer.GetStreamName(),
+		message.Data, consumerContext.Consumer.GetOffset())
+
+	// Store the offset after processing the message :: bad practice
+	err := consumerContext.Consumer.StoreOffset()
+	shared.FailOnError(err, "Failed to store offset")
+
+	fmt.Printf("Stream: %s - Storing offset after processing message: %s\n", consumerContext.Consumer.GetStreamName(), message.Data)
 }
