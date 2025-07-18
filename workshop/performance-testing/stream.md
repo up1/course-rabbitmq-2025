@@ -16,3 +16,6 @@ $java -jar stream-perf-test-latest.jar --uris rabbitmq-stream://user:password@lo
 
 $java -jar stream-perf-test-latest.jar --uris rabbitmq-stream://user:password@localhost:5552 --producers 1 --consumers 5 --rate 10000 --prometheus
 ```
+
+Enable metrics
+* http://localhost:8080/metrics
